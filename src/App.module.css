@@ -1,0 +1,15 @@
+.h1 {
+    font-style: normal;
+    font-size: 70px;
+    font-family: Georgia;
+    padding:0px 20px 10px 800px;
+    font-weight:bold
+   
+}
+.h2 {
+    font-style: normal;
+    font-size: 40px;
+    font-family: Georgia;
+    padding: 0px 20px 10px 300px;
+    margin: 20px 0px 0px 0px;
+}
