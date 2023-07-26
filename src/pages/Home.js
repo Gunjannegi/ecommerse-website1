@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { ListGroup, Button } from 'react-bootstrap';
+import classes from './pages.module.css';
 const Home = () => {
     const tourList = [
         {
@@ -36,13 +37,13 @@ const Home = () => {
     return (
         <Fragment>
             <h3>TOURS</h3>
-            <ListGroup>
+            <ListGroup className={classes.card}>
                 {tourList.map(tour => (
-                    <ListGroup.Item>
-                        <span>{tour.date}</span>
-                        <span>{tour.place}</span>
-                        <span>{tour.concertVenue}</span>
-                        <Button>BUY TICKETS</Button>
+                    <ListGroup.Item classes={classes.item}>
+                        <span className={classes.item1}>{tour.date}</span>
+                        <span className={classes.item2}>{tour.place}</span>
+                        <span className={classes.item3}>{tour.concertVenue}</span>
+                        <Button className={classes.button}>BUY TICKETS</Button>
 
                     </ListGroup.Item>
 

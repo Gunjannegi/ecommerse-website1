@@ -1,63 +1,72 @@
- import { Fragment } from "react";
+import { Fragment } from "react";
 import { ListGroup } from 'react-bootstrap';
 import ProductList from "../components/ProductList";
 import classes from './pages.module.css';
-    const Store = () => {
-        const productsArr = [
-            {
-                title: "Colors",
+import { Link } from 'react-router-dom';
 
-                price: 100,
+const Store = () => {
+    const productsArr = [
+        {
+            title: "Colors",
 
-                imageUrl:
-                    "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-            },
+            price: 100,
 
-            {
-                title: "Black and white Colors",
+            imageUrl:
+                "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+            productId:'p1'
+        },
 
-                price: 50,
+        {
+            title: "Black and white Colors",
 
-                imageUrl:
-                    "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-            },
+            price: 50,
 
-            {
-                title: "Yellow and Black Colors",
+            imageUrl:
+                "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+            productId: 'p2'
+        },
 
-                price: 70,
+        {
+            title: "Yellow and Black Colors",
 
-                imageUrl:
-                    "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-            },
+            price: 70,
 
-            {
-                title: "Blue Color",
+            imageUrl:
+                "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+            productId: 'p3'
+        },
 
-                price: 100,
+        {
+            title: "Blue Color",
 
-                imageUrl:
-                    "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-            },
-        ];
-        const productList =
-            <ListGroup>
-                {productsArr.map((product) => (
-                    <ProductList
-                        key={Math.floor(Math.random() * 100)}
-                        title={product.title}
-                        price={product.price}
-                        imageUrl={product.imageUrl}
-                    />
-                ))}
-            </ListGroup>
+            price: 100,
 
-        return (
-            <Fragment>
-                <div className={classes.title}>MUSIC</div>
-                {productList}
-            </Fragment>
-        )
+            imageUrl:
+                "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+            productId: 'p4'
+        },
+    ];
+    const productList =
+        <ListGroup>
+            {productsArr.map((product) => (
+
+                <ProductList
+                    key={Math.floor(Math.random() * 100)}
+                    title=
+                    {<Link to={`/Store/${product.productId}`}>{product.title}</Link>}
+                    price={product.price}
+                    imageUrl={product.imageUrl}
+                    productId={product.productId}
+                />
+            ))}
+        </ListGroup>
+
+    return (
+        <Fragment>
+            <div className={classes.title}>MUSIC</div>
+            {productList}
+        </Fragment>
+    )
 
 };
 export default Store;

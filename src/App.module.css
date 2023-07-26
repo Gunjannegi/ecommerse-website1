@@ -11,5 +11,8 @@
     font-size: 40px;
     font-family: Georgia;
     padding: 0px 20px 10px 300px;
-    margin: 20px 0px 0px 0px;
+
+}
+.bar{
+    margin-top:20px;
 }

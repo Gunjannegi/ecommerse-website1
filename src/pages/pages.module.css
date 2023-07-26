@@ -9,12 +9,33 @@
     padding:5px 500px 10px 500px;
 }
 .card {
-    
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     background-color: #fff;
-    max-width: 600px;
+    max-width:max-content;
     margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.item{
+    display:flex;
+}
+.item1{
+    margin-left:20px;
+    justify-content:space-between
+ 
+}
+.item2 {
+    margin:20px;
+    justify-content: space-between;
+}
+.item3 {
+    margin: 40px;
+    justify-content: space-between;
+}
+.button {
+    margin-right: 10px;
+
 
 }
