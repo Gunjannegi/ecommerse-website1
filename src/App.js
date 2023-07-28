@@ -8,7 +8,12 @@ import Store from './pages/Store';
 import { Navbar } from "react-bootstrap";
 import classes from './App.module.css'
 import ProductDetails from './pages/ProductDetails';
+import { useContext } from 'react';
+import AuthContext from './components/store/auth-context';
+import Login from './pages/Login';
+
 function App() {
+    const authCntxt = useContext(AuthContext)
     return (
         <div>
             <CartProvider>
@@ -18,8 +23,8 @@ function App() {
                 </Navbar>
                 <main>
                     <Switch>
-                    <Route path="/" exact>
-                    <Redirect to='/Store'/>
+                        <Route path="/" exact>
+                    <Redirect to='/Login'/>
                     </Route>
                     <Route path="/Home">
                         <Home />
@@ -29,7 +34,12 @@ function App() {
                     </Route>
                     <Route path="/About">
                         <About />
-                    </Route>
+                        </Route>
+                        <Route path="/Login">
+                            {authCntxt.isLoggedIn && <Store />}
+                            {!authCntxt.isLoggedIn && <Login/>}
+                        
+                        </Route>
                     <Route path="/Contact">
                         <ContactUs />
                     </Route>

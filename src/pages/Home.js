@@ -36,14 +36,15 @@ const Home = () => {
     ]
     return (
         <Fragment>
-            <h3>TOURS</h3>
+            <div className={classes.title}>TOURS</div>
             <ListGroup className={classes.card}>
                 {tourList.map(tour => (
                     <ListGroup.Item classes={classes.item}>
                         <span className={classes.item1}>{tour.date}</span>
                         <span className={classes.item2}>{tour.place}</span>
                         <span className={classes.item3}>{tour.concertVenue}</span>
-                        <Button className={classes.button}>BUY TICKETS</Button>
+                        <span className={classes.button}>
+                            <Button>BUY TICKETS</Button></span>
 
                     </ListGroup.Item>
 
