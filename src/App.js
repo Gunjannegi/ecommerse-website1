@@ -29,8 +29,9 @@ function App() {
                     <Route path="/Home">
                         <Home />
                     </Route>
-                    <Route path="/Store" exact>
-                        <Store />
+                        <Route path="/Store" exact>
+                            {authCntxt.isLoggedIn && < Store />}
+                            {!authCntxt.isLoggedIn && <Redirect to = '/Login'/>}
                     </Route>
                     <Route path="/About">
                         <About />
