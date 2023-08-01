@@ -1,8 +1,6 @@
 import { Fragment } from "react";
-import { ListGroup } from 'react-bootstrap';
-import ProductList from "../components/ProductList";
-import classes from './pages.module.css';
-import { Link } from 'react-router-dom';
+import classes from './store.module.css';
+import ProductList from "../../components/ProductList";
 
 const Store = () => {
     const productsArr = [
@@ -47,23 +45,23 @@ const Store = () => {
         },
     ];
     const productList =
-        <ListGroup>
+        <ul className={classes.ul}>
             {productsArr.map((product) => (
-
-                <ProductList
-                    key={Math.floor(Math.random() * 100)}
-                    title=
-                    {<Link to={`/Store/${product.productId}`}>{product.title}</Link>}
+                <li className={classes.li}>
+                    <ProductList
+                        key={product.productId}
+                        title={product.title}
                     price={product.price}
                     imageUrl={product.imageUrl}
                     productId={product.productId}
-                />
+                    />
+                </li>
             ))}
-        </ListGroup>
+        </ul >
 
     return (
         <Fragment>
-            <div className={classes.title}>MUSIC</div>
+            <div className={classes.heading}>MUSIC</div>
             {productList}
         </Fragment>
     )

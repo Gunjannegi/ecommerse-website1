@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import classes from './pages.module.css';
+import classes from './contactUs.module.css';
 const ContactUs = () => {
     const [enteredName, setEnteredName] = useState('');
     const [enteredEmail, setEnteredEmail] = useState('');
@@ -44,21 +44,21 @@ const ContactUs = () => {
 
     };
     return (
-        <div className={classes.card }>
+        <div className={classes.formcontainer }>
             <form onSubmit={submitHandler}>
-                <div className='form-group'>
-                    <label>Name : </label>
+                <div>
+                    <label className={classes.formlabel }>Name : </label>
                     <input type='text' id='nameId' className='form-control' value={enteredName} onChange={nameChangeHandler} ></input>
                 </div>
-                <div className='form-group'>
-                    <label>Email : </label>
+                <div>
+                    <label className={classes.formlabel}>Email : </label>
                     <input type='email' id='emailId' className='form-control' value={enteredEmail} onChange={emailChangeHandler}></input>
                 </div>
-                <div className='form-group'>
-                    <label>Phone Number : </label>
+                <div>
+                    <label className={classes.formlabel}>Phone Number : </label>
                     <input type='tel' id='numberId' className='form-control' value={enteredNumber} onChange={numberChangeHandler}></input>
                 </div>
-                <button type='submit' className='btn btn-default'>Submit</button>
+                <button type='submit' className={classes.formbutton}>Submit</button>
             </form>
         </div>
     )

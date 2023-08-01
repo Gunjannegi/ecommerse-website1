@@ -1,0 +1,36 @@
+.logincontainer {
+    background-color: paleturquoise;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 450px;
+    margin: 100px 600px 100px 800px;
+}
+.loginhead {
+    text-align: center;
+    font-weight: bold;
+    color: darkblue;
+    font-size: 40px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.loginlabel {
+    font-weight: bold;
+    color: blue;
+    font-size: 20px;
+    margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.input {
+    border: 2px solid blue;
+    border-radius: 4px;
+}
+.loginbutton{
+    margin:20px;
+    background-color:darkblue;
+    color:white;
+    font-weight:bold;
+    font-family:'Times New Roman', Times, serif;
+}

@@ -1,13 +1,15 @@
-import { Fragment, useContext } from "react";
+import { useContext } from "react";
 import { useRef, useState } from "react";
-import AuthContext from "../components/store/auth-context";
+import AuthContext from "../../components/store/auth-context";
+import classes from './login.module.css';
+
 
 const Login = () => {
     const [login, setLogin] = useState(false);
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
     const authCntxt = useContext(AuthContext);
-  
+
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -27,10 +29,12 @@ const Login = () => {
             }).then(res => {
                 if (res.ok) {
                     res.json().then(data => {
-                        console.log(data)
                         authCntxt.login(data.idToken)
                         setLogin(true);
+                        localStorage.setItem('email', data.email)
+                       
                     })
+                    
 
                 } else {
                     res.json().then(data => {
@@ -45,17 +49,18 @@ const Login = () => {
 
         }
     }
+   
     return (
-        <Fragment>
-        <h1>Login</h1>
-        <form onSubmit={submitHandler}>
-            <label>Your Email</label>
-            <input type='email' id='emailId' ref={emailInputRef} required></input>
-            <label>Your Password</label>
-            <input type='password' id='passwordId' minLength='7' ref={passwordInputRef} required></input>
-            <button>Login</button>
+        <div className={classes.logincontainer}>
+            <div className={classes.loginhead}>Login</div>
+            <form  onSubmit={submitHandler}>
+                <label className={classes.loginlabel}>Your Email : </label>
+                <input className={classes.input} type='email' id='emailId' ref={emailInputRef} required></input>
+                <label className={classes.loginlabel}>Your Password : </label>
+                <input className={classes.input} type='password' id='passwordId' minLength='7' ref={passwordInputRef} required></input>
+                <button className={classes.loginbutton}>Login</button>
             </form>
-        </Fragment>
+        </div>
     )
 };
 export default Login;

@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
-import { ListGroup, Button } from 'react-bootstrap';
-import classes from './pages.module.css';
+import classes from './home.module.css';
 const Home = () => {
     const tourList = [
         {
@@ -37,19 +36,25 @@ const Home = () => {
     return (
         <Fragment>
             <div className={classes.title}>TOURS</div>
-            <ListGroup className={classes.card}>
-                {tourList.map(tour => (
-                    <ListGroup.Item classes={classes.item}>
-                        <span className={classes.item1}>{tour.date}</span>
-                        <span className={classes.item2}>{tour.place}</span>
-                        <span className={classes.item3}>{tour.concertVenue}</span>
-                        <span className={classes.button}>
-                            <Button>BUY TICKETS</Button></span>
+            <div>
+                <ul className={classes.ul}>
+                    {tourList.map(tour => (
+                        <li className={classes.li}>
+                            <div>
+                        <span className={classes.item}>{tour.date}</span>
+                        <span className={classes.item}>{tour.place}</span>
+                        <span className={classes.item}>{tour.concertVenue}</span>
+                                
+                            </div>
+                            <div>
+                                <button className={classes.button}>BUY TICKETS</button>
+                        </div>
 
-                    </ListGroup.Item>
+                    </li>
 
                 ))}
-            </ListGroup>
+                </ul>
+            </div>
         </Fragment>
     )
 

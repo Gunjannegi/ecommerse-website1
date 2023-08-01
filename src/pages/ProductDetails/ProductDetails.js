@@ -1,5 +1,6 @@
+import { Fragment } from 'react';
+import classes from './productDetails.module.css';
 import { useParams } from 'react-router-dom';
-import classes from './pages.module.css';
 const ProductDetails = () => {
     const { productId } = useParams();
     const productsArr = [
@@ -48,10 +49,8 @@ const ProductDetails = () => {
         product.productId === productId
     ))
     return (
-        <>
-            <section>
-                <div className={classes.title}>Product Details</div>
-            </section>
+        <Fragment>
+            <div className={classes.title}>Product Details</div>
             <section>
                 {selectedProduct.map(product => (
                     <div className='container'>
@@ -67,7 +66,7 @@ const ProductDetails = () => {
 
                 ))}
             </section>
-        </>
+        </Fragment>
     )
 };
 export default ProductDetails;

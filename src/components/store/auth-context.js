@@ -12,13 +12,11 @@ export const AuthProvider = (props) => {
     const loginHandler = (token) => {
         setToken(token);
         localStorage.setItem('token', token)
-        setTimeout(() => {
-            localStorage.removeItem('token')
-        }, 10000)
-
     };
     const logoutHandler = () => {
-
+        setToken(null)
+        localStorage.removeItem('token')
+        localStorage.removeItem('email')
     }
 
     const authContext = {

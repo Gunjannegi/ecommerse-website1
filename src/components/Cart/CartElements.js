@@ -4,6 +4,10 @@ import CartContext from "../store/cart-context";
 import CartTotalAmount from "./CartTotalAmount";
 const CartElements = () => {
     const cartCntxt = useContext(CartContext);
+    const deleteAnItem = (event) => {
+        cartCntxt.removeItem(event.target.value)
+
+    }
 
     return (
         <>
@@ -25,8 +29,11 @@ const CartElements = () => {
                                     {element.price}</Col>
                                 <Col>
                                     {element.quantity}</Col>
+                            <Col>
+                                    <Button variant="outline-primary"
+                                        size="sm" value={element.productId}
+                                        onClick={deleteAnItem}>-</Button></Col>
                             </Row>
-                            <Button variant="outline-primary" size="sm">-</Button>
                         </ListGroup.Item>
                     ))
 

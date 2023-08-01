@@ -1,4 +1,4 @@
-import classes from './pages.module.css';
+import classes from './about.module.css';
 const About = () => {
     const description = <p>
         Lorem ipsum carrots enhanced rebates. Excellent sayings of a

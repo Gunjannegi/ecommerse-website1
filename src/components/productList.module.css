@@ -1,0 +1,16 @@
+.title1 {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+.price{
+    padding: 40px 50px 40px 0px;
+
+}
+.button{
+    margin-left:150px;
+    background-color:darkblue;
+    color: white;
+    font-weight:bold
+
+}

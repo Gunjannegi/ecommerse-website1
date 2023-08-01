@@ -17,7 +17,7 @@ const Cart = () => {
         <>
             <Button variamt="Dark" onClick={showOnScreen} ref={target}>Cart
                 <span className='badge bg-secondary'>{totalQuantity}</span></Button>
-            <Overlay target={target.current} show={show} placement='right'>
+            <Overlay target={target.current} show={show} placement='left'>
                 {({ placement, arrowProps, show: _show, popper, ...props }) => (
 
                     <div

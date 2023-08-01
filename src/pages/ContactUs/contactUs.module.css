@@ -1,0 +1,26 @@
+.formcontainer {
+    background-color: paleturquoise;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 450px;
+    margin: 100px 600px 100px 800px;
+}
+
+
+
+.formlabel {
+    font-weight: bold;
+    color: blue;
+    font-size: 20px;
+    margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.formbutton {
+    margin: 20px;
+    background-color: darkblue;
+    color: white;
+    font-weight: bold;
+}
