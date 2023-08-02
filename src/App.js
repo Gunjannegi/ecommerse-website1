@@ -3,15 +3,16 @@ import MainHeader from './components/MainHeader';
 import CartProvider from './components/store/CartProvider';
 import { Navbar } from "react-bootstrap";
 import classes from './App.module.css';
-import { useContext } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import AuthContext from './components/store/auth-context';
-import Store from './pages/Store/Store';
-import ContactUs from './pages/ContactUs/ContactUs';
-import About from './pages/About/About';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import ProductDetails from './pages/ProductDetails/ProductDetails';
 
+
+const Home = lazy(() => import('./pages/Home/Home'))
+const Store = lazy(() => import('./pages/Store/Store'))
+const About = lazy(() => import('./pages/About/About'))
+const Login = lazy(() => import('./pages/Login/Login'))
+const ContactUs = lazy(() => import('./pages/ContactUs/ContactUs'))
+const ProductDetails = lazy(() => import('./pages/ProductDetails/ProductDetails'))
 function App() {
     const authCntxt = useContext(AuthContext)
     return (
@@ -24,29 +25,35 @@ function App() {
                 <main>
                     <Switch>
                         <Route path="/" exact>
-                    <Redirect to='/Login'/>
-                    </Route>
-                        <Route path="/Home">
-                            <Home />
-                    </Route>
-                        <Route path="/Store" exact>
-                            {authCntxt.isLoggedIn && < Store />}
-                            {!authCntxt.isLoggedIn && <Redirect to = '/Login'/>}
-                    </Route>
-                        <Route path="/About">
-                            <About />
+                            <Redirect to='/Login' />
                         </Route>
-                        <Route path="/Login">
+                        <Suspense fallback={<p>Loading...</p>}>
+                            <Route path="/Home"
+                                loader={() => import('./pages/Home/Home').then((module) => module.loader())}>
+                            <Home/>
+                           </Route>
+                        <Route path="/Store" exact
+                            loader={() => import('./pages/Store/Store').then((module) => module.loader())}>
+                            {authCntxt.isLoggedIn && < Store />}
+                            {!authCntxt.isLoggedIn && <Redirect to='/Login' />}
+                            </Route>
+                        <Route path="/About"
+                            loader={() => import('./pages/About/About').then((module) => module.loader())}>
+                            <About />
+                            </Route>
+                        <Route path="/Login"
+                            loader={() => import('./pages/Login/Login').then((module) => module.loader())}>
                             {authCntxt.isLoggedIn && <Redirect to='/Store' />}
                             {!authCntxt.isLoggedIn && <Login />}
-                        
-                        </Route>
-                        <Route path="/Contact">
+                            </Route>
+                        <Route path="/Contact"
+                                loader={() => import('./pages/ContactUs/ContactUs').then((module) => module.loader())}>
                             <ContactUs />
-                    </Route>
-                        <Route path="/Store/:productId">
+                            </Route>
+                        <Route path="/Store/:productId"
+                            loader={() => import('./pages/ProductDetails/ProductDetails').then((module) => module.loader())}>
                             <ProductDetails />
-                        </Route>
+                            </Route></Suspense>
                     </Switch>
 
                 </main>

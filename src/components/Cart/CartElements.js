@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Col, Row, Button, ListGroup } from "react-bootstrap";
 import CartContext from "../store/cart-context";
 import CartTotalAmount from "./CartTotalAmount";
+import classes from './cartElement.module.css';
 const CartElements = () => {
     const cartCntxt = useContext(CartContext);
     const deleteAnItem = (event) => {
@@ -10,13 +11,13 @@ const CartElements = () => {
     }
 
     return (
-        <>
+        <div className={classes.container}>
             <h3>Cart</h3>
             <Row>
                 <Col>Item</Col>
                 <Col>Price</Col>
                 <Col>Quantity</Col>
-
+                <Col>Delete</Col>
             </Row>
             <ListGroup>
                 {
@@ -40,7 +41,7 @@ const CartElements = () => {
                 }
             </ListGroup>
             <CartTotalAmount></CartTotalAmount>
-        </>
+        </div>
     )
 };
 export default CartElements

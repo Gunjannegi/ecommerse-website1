@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import classes from './about.module.css';
 const About = () => {
     const description = <p>
@@ -24,23 +25,22 @@ const About = () => {
     </p>
 
     return (
-        <>
+        <Fragment>
             <div className={classes.title}>ABOUT</div>
             <div className="container">
                 <div className="row">
                     <div className="col-md-4">
                 
                 <img src='https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png'
-                        alt='img'
-                        style={{ width: '300px', height: 'auto' }}
-                            className='img-fluid rounded-circle' ></img>
+                            alt='img'
+                            className={classes.showimage} ></img>
                     </div>
                 <div className="col-md-8">
                     {description}
                     </div>
                 </div>
             </div>
-        </>
+        </Fragment>
     )
 
 };

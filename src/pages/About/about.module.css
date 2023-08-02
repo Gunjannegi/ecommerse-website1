@@ -6,3 +6,8 @@
     padding: 20px;
     font-family: 'Times New Roman', Times, serif;
 }
+.showimage {
+    width: 300px;
+    height: auto;
+    border-radius:50%;
+}

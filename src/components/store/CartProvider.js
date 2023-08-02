@@ -12,19 +12,20 @@ const CartProvider = (props) => {
         var emailStr = email.replace(/[^a-zA-Z0-9 ]/g, '');
 
     }
+
+
     const savingItemsInCart = async () => {
-        const response = await axios.get(`https://crudcrud.com/api/a96a767049394a8187c540b2bb44791b/cart${emailStr}`)
+        const response = await axios.get(`https://crudcrud.com/api/908d9a6d31ff42018724190ebd4481d6/cart${emailStr}`)
         console.log('successful', response.data)
-        console.log(response.data.length)
         if (items.length === 0 && response.data.length !== 0) {
             setItems(response.data)
         }
-
     }
     if (authCntxt.isLoggedIn && items.length === 0) {
         savingItemsInCart()
     }
-           
+
+
     const addingItemToCart = async (item) => {
 
         let flag = false;
@@ -41,18 +42,18 @@ const CartProvider = (props) => {
             })
         }
         try {
-            const response = await axios.get(`https://crudcrud.com/api/a96a767049394a8187c540b2bb44791b/cart${emailStr}`)
+            const response = await axios.get(`https://crudcrud.com/api/908d9a6d31ff42018724190ebd4481d6/cart${emailStr}`)
             const existingCartItems = response.data;
             const data = existingCartItems.find((i) => {
                 return i.productId === item.productId;
             })
 
             if (!data) {
-                const response = await axios.post(`https://crudcrud.com/api/a96a767049394a8187c540b2bb44791b/cart${emailStr}`, item)
+                const response = await axios.post(`https://crudcrud.com/api/908d9a6d31ff42018724190ebd4481d6/cart${emailStr}`, item)
                 console.log('successful', response.data)
             }
             else {               
-                const response = await axios.put(`https://crudcrud.com/api/a96a767049394a8187c540b2bb44791b/cart${emailStr}/${data._id}`, {
+                const response = await axios.put(`https://crudcrud.com/api/908d9a6d31ff42018724190ebd4481d6/cart${emailStr}/${data._id}`, {
                     quantity: data.quantity + 1,
                     price: data.price,
                     title: data.title,
@@ -69,14 +70,14 @@ const CartProvider = (props) => {
     const removingItemFromCart = async (id) => {
         
         try {
-            const response = await axios.get(`https://crudcrud.com/api/a96a767049394a8187c540b2bb44791b/cart${emailStr}`)
+            const response = await axios.get(`https://crudcrud.com/api/908d9a6d31ff42018724190ebd4481d6/cart${emailStr}`)
             const existingCartItems = response.data;
             console.log(existingCartItems)
             const data = existingCartItems.find((i) => {
                 return i.productId === id;
             })
             if (data) {
-                const response = await axios.delete(`https://crudcrud.com/api/a96a767049394a8187c540b2bb44791b/cart${emailStr}/${data._id}`)
+                const response = await axios.delete(`https://crudcrud.com/api/908d9a6d31ff42018724190ebd4481d6/cart${emailStr}/${data._id}`)
                 console.log(response.data)
             }
         } catch (error) {
@@ -84,7 +85,6 @@ const CartProvider = (props) => {
         }
         setItems(() => {
             const restItem = items.filter((item) => item.productId !== id);
-            console.log(restItem)
             return restItem;
         })
         
